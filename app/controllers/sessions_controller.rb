@@ -10,12 +10,13 @@ class SessionsController < ApplicationController
   		session[:user_id] = user.id  #set the value of the :userid hash to the current user.id.
   		redirect_to products_path , :notice => "User #{user.id} logged in!"
   	else
+  		flash.now[:alert] = "invalid email or password"
   		render :new #render new user if login fail
   	end
   end
 
   def destroy #log out
   	session[:user_id] = nil #set the :userid hash to nil
-  	redirect_to products_path, :notice => "logged in!"
+  	redirect_to products_path, :notice => "logged out!"
   end
 end
