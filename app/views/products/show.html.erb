@@ -1,0 +1,10 @@
+<h1>Products#show</h1>
+<p>Find me in app/views/products/show.html.erb</p>
+
+<h2>Product: <%= @product.name %></h2>
+<ul>
+	<li><%= @product.description %>
+	<li><%= @product.price_in_cents %>
+</ul>
+
+<%= link_to "home" , products_path %>

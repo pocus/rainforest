@@ -1,4 +1,19 @@
 Rainforest::Application.routes.draw do
+
+  resources :products
+
+  #named routes let you use url helpers
+  # get 'products' => "products#index"
+  # get 'products/:id' => "products#show"
+  # get 'products/new' => "products#new"
+  # post 'products/new' => "products#create"
+  # get 'products/:id/edit' => "products#edit" as: "edit_product"
+  # patch 'products/:id/edit' => "products#update"
+  # delete 'products/:id' => "products#destroy" as: "delete_product"
+
+end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +68,3 @@ Rainforest::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

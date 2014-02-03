@@ -1,0 +1,21 @@
+<%= form_for @product do |f| %>
+<!-- must use the class variable here. -->
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<br>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+
+<br>
+
+<%= f.label :price_in_cents %>
+<%= f.text_field :price_in_cents %>
+
+<br>
+
+<%= f.submit %>
+
+<% end %>
