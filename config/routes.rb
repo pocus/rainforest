@@ -1,6 +1,9 @@
 Rainforest::Application.routes.draw do
 
+  get "users/new"
+  get "users/create"
   resources :products
+  resources :users, :only => [:new, :create]
 
   #named routes let you use url helpers
   # get 'products' => "products#index"
