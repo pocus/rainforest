@@ -1,6 +1,19 @@
 <%= form_for @product do |f| %>
 <!-- must use the class variable here. -->
 
+<% if @product.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@product.errors.count, "error") %> prevented this product form being saved:</h2>
+
+		<ul>
+			<% @product.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+
 <%= f.label :name %>
 <%= f.text_field :name %>
 
