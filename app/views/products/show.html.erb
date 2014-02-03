@@ -4,7 +4,7 @@
 <h2>Product: <%= @product.name %></h2>
 <ul>
 	<li><%= @product.description %>
-	<li><%= @product.price_in_cents %>
+	<li><%= @product.formatted_price %>
 </ul>
 
 <%= link_to "home" , products_path %>

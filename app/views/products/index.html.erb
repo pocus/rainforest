@@ -8,7 +8,7 @@
 	<p>
 		<li><%= link_to p.name, product_path(p) %></li>
 		<li><%= p.description %></li>
-		<li>$0.<%= p.price_in_cents %></li>
+		<li>$<%= p.formatted_price %></li>
 		<li><%= link_to "edit", edit_product_path(p) %>
 	</p>
 	<% end %>
