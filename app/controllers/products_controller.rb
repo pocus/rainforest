@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_filter :ensure_logged_in, :only => [:show]
+  before_filter :ensure_logged_in, :only => [:edit, :destroy, :new]
   #only ensure logged in for show.
 
   def index
@@ -10,12 +10,9 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-
-    if current_user
-      @review = @product.reviews.new
-    end
-
-  	#set class variable to one product.
+    #set class variable to one product as specified by url
+    @review = @product.reviews.new
+    #initialize empty review so that form can be rendered.
   end
 
   def new

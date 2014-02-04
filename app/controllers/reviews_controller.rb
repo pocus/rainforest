@@ -17,13 +17,12 @@ class ReviewsController < ApplicationController
   	if @review.save
   		redirect_to product_path(@product), notice: 'Review created!'
   	else
-  		render :action => :show
+      render :show
   	end
 
   end
 
   def destroy
-
   	@review = @product.reviews.find(params[:id])
   	@review.destroy
   	redirect_to product_path(@product)

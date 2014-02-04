@@ -9,57 +9,44 @@
 	<li><%= @product.formatted_price %>
 </ul>
 
+	<h2>Reviews for <%= @product.name %></h2>
+	<% @product.reviews.each do |r| %>
 
-<% if current_user %>
-
-<h2>Reviews for <%= @product.name %></h2>
-
-
-<% @product.reviews.each do |r| %>
-
-
+	<% if r.id  %>
 		<p>"<%= r.comment %>"</p>
-
-		<% if r.user != nil %>
 	 	 by <%= r.user.name %>
-	 	<% end %>
-
-
 		<p>Added on <%= r.created_at %></p>
 		<%= link_to "delete review", [@product, r], :method => :delete %>
-
+		<% end %>
 	<% end %>
-<% end  %>
-
-<%= link_to "home" , products_path %>
 
 
 <% if current_user %>
 <h1>New review</h1>
 
 <%= form_for ([@product, @review]) do |f| %>
-<% if @review.errors.any?  %>
-	<div id = "error_explanation">
-		<h2><%= pluralize(@review.errors.count, "error") %> prevented this review from being saved.</h2>
 
-		<ul>
-			<% @review.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-		</ul>
-</div>
-<% end %>
+	<% if @review.errors.any?  %>
+		<div id = "error_explanation">
+			<h2><%= pluralize(@review.errors.count, "error") %> prevented this review from being saved.</h2>
+			<ul>
+				<% @review.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+	</div>
+	<% end %>
 
-<div class = "field">
-<%= f.label :comment %>
-<%= f.text_area :comment %>
-</div>
+	<div class = "field">
+		<%= f.label :comment %>
+		<%= f.text_area :comment %>
+	</div>
 
-<div class = "actions">
-	<%= f.submit %>
-</div>
-<% end %>
+	<div class = "actions">
+		<%= f.submit %>
+	</div>
+	<% end %>
 
 <% else %>
-<p>Please <%= link_to "log in", new_session_path %> to review.</p>
+	<p>Please <%= link_to "log in", new_session_path %> to review.</p>
 <% end %>
