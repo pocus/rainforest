@@ -11,3 +11,50 @@
  *= require_self
  *= require_tree .
  */
+
+h1, h2, h3 {
+	font-family: 'Paprika', cursive;
+}
+
+.item-box {
+	margin: 5px;
+	width: 32%;
+
+	display: inline-block;
+	background-color: tan;
+}
+
+.review-item {
+	margin: 5px;
+	width: 20%;
+	background-color: skyblue;
+}
+
+.userinfo {
+background-color: darkorange;
+text-align: right;
+font-family: sans-serif;
+line-height: 40px;
+padding-right: 10px;
+
+}
+
+.userinfo li {
+	display: inline;
+	padding: 10px;
+}
+
+#alert {
+background-color: salmon;
+font-family: sans-serif;
+line-height: 30px;
+text-align: center;
+
+}
+
+#notice {
+background-color: lightsteelblue;
+font-family: sans-serif;
+line-height: 30px;
+text-align: center;
+}

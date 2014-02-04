@@ -5,19 +5,28 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+ 	<link href='http://fonts.googleapis.com/css?family=Paprika' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
 
-	<p class = "userinfo">
+	<div class = "userinfo">
+		<ul>
+		<li><%= link_to "home", products_path %></li>
+
 		<% if current_user %>
-		Signed in as <%= current_user.name %>( <%= current_user.email %>). <%= link_to "log out", session_path("current"), :method => :delete %>
+		<li>Signed in as <%= current_user.name %>(<%= current_user.email %>)</li>
+
+		<li><%= link_to "log out", session_path("current"), :method => :delete %> </li>
 		 <!-- session DELETE /sessions/:id(.:format)      sessions#destroy -->
 		 <!-- the argument for session_path can be any string? -->
 
 		<% else %>
-		<%= link_to "log in" , new_session_path %> or <%= link_to "sign up" , new_user_path %>
+		<li><%= link_to "log in" , new_session_path %> or <%= link_to "sign up" , new_user_path %></li>
 	<% end %>
+</div>
 
 <% if flash[:notice] %>
 	<p id ="notice"><%= flash[:notice] %></p>
