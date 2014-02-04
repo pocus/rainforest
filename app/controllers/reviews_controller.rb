@@ -2,6 +2,9 @@ class ReviewsController < ApplicationController
 
 	before_filter :load_product
 	#so that there's always a product loaded
+	before_filter :ensure_logged_in, :only => [:show, :create, :show, :update, :destroy]
+	#only ensure logged in for the methods in the hash.
+
 
   def show
   	@review = Review.find(params[:id])

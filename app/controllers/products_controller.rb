@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+
+  before_filter :ensure_logged_in, :only => [:show]
+  #only ensure logged in for show.
+
   def index
   	@products = Product.all
   	#set class variable to all products array
