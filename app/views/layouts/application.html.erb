@@ -9,10 +9,19 @@
 
 <body>
 
+	<p class = "userinfo">
+		<% if current_user %>
+		Signed in as <%= current_user.email %>. <%= link_to "log out", session_path("current"), :method => :delete %>
+		 <!-- session DELETE /sessions/:id(.:format)      sessions#destroy -->
+		 <!-- the argument for session_path can be any string? -->
+
+		<% else %>
+		<%= link_to "log in" , new_session_path %> or <%= link_to "sign up" , new_user_path %>
+	<% end %>
+
 <% if flash[:notice] %>
 	<p id ="notice"><%= flash[:notice] %></p>
 <% end %>
-
 
 <% if flash[:alert] %>
 	<p id ="alert"> <%= flash[:alert] %></p>
