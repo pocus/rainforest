@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
 end
 
+	#this is in the application_controller because it should be available to all views,
+	#not just views for a specific model.
 
 	# if session[:user_id] == true
 	# 	@current_user ||= User.find(session[:user_id])
