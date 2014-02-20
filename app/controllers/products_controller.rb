@@ -4,8 +4,11 @@ class ProductsController < ApplicationController
   #only ensure logged in for show.
 
   def index
-  	@products = Product.all
-  	#set class variable to all products array
+    if params[:search]
+      @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
