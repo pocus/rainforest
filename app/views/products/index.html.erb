@@ -21,25 +21,27 @@
 
 
 <script type="text/javascript">
+
 	function display_search_results () {
 
 		if (this.readyState === 4){
 			console.log(this);
-			document.getElementsById('products').innerHTML = this.responseText;
+			document.getElementById('products').innerHTML = this.responseText;
 		}
-
-		var form = document.getElementById('search-form');
-		form.addEventListener('submit', function(event){
-
-			event.preventDefault();
-			var searchValue = document.getElementById('search').value;
-			var xhr = new XMLHttpRequest();
-			xhr.onload = display_search_results;
-			xhr.open('get', '/products/search?search=' + searchValue,true);
-			xhr.send();
-
-		})
-
 	}
+
+	var form = document.getElementById('search-form');
+
+	form.addEventListener('submit', function(event){
+		event.preventDefault();
+		var searchValue = document.getElementById('search').value;
+		var xhr = new XMLHttpRequest();
+		xhr.onload = display_search_results;
+		alert ("!!")
+		xhr.open('GET', '/products?search=' + searchValue,true);
+		xhr.send();
+	});
+
+
 
 </script>

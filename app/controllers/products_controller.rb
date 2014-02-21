@@ -11,6 +11,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+    render @products
+  end
+
+
   def show
   	@product = Product.find(params[:id])
     #set class variable to one product as specified by url
