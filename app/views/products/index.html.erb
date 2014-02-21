@@ -8,25 +8,38 @@
 </p>
 
 <p>
-<%= link_to "add new product", new_product_path %>
+	<%= link_to "add new product", new_product_path %>
 </p>
 
 <p>
-<%= link_to "add new user", new_user_path %>
+	<%= link_to "add new user", new_user_path %>
 </p>
 
+<div id="products">
+	<%= render @products %>
+</div>
 
-	<% @products.each do |p| %>
-	<div class = "item-box">
-		<ul>
-			<li><%= link_to p.name, product_path(p) %></li>
-			<li><%= p.description %></li>
-			<li>$<%= p.formatted_price %></li>
-			<li><%= pluralize(p.reviews.count, "review") %></li>
-			<% if current_user %>
-				<li><%= link_to "edit", edit_product_path(p) %>
-				<li><%= link_to "delete", product_path(p), :method => :delete %>
-			<% end  %>
-		</ul>
-	</div>
-	<% end %>
+
+<script type="text/javascript">
+	function display_search_results () {
+
+		if (this.readyState === 4){
+			console.log(this);
+			document.getElementsById('products').innerHTML = this.responseText;
+		}
+
+		var form = document.getElementById('search-form');
+		form.addEventListener('submit', function(event){
+
+			event.preventDefault();
+			var searchValue = document.getElementById('search').value;
+			var xhr = new XMLHttpRequest();
+			xhr.onload = display_search_results;
+			xhr.open('get', '/products/search?search=' + searchValue,true);
+			xhr.send();
+
+		})
+
+	}
+
+</script>

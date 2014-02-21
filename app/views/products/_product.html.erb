@@ -1,0 +1,12 @@
+<div class = "item-box">
+		<ul>
+			<li><%= link_to product.name, product_path(product) %></li>
+			<li><%= product.description %></li>
+			<li>$<%= product.formatted_price %></li>
+			<li><%= pluralize(product.reviews.count, "review") %></li>
+			<% if current_user %>
+				<li><%= link_to "edit", edit_product_path(product) %>
+				<li><%= link_to "delete", product_path(product), :method => :delete %>
+			<% end  %>
+		</ul>
+	</div>
