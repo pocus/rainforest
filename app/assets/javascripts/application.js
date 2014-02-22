@@ -17,10 +17,9 @@
 
 $(document).ready(function() {
 
-	$('search-form').submit(function(e) {
-
+	$('#search-form').submit(function(e) {
 		e.preventDefault();
-		var searchValue = $('search').val();
+		var searchValue = $('#search').val();
 
 		$.ajax({
 			url: 'products?search=' + searchValue,
@@ -29,7 +28,7 @@ $(document).ready(function() {
 
 		}).done(function(data){
 
-			$('products').html(data); //replace the html of the products div with the data returned
+			$('#products').html(data); //replace the html of the products div with the data returned
 			// there's also .fail() and .always()
 		});
 
