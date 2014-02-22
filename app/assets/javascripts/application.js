@@ -12,31 +12,55 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
+
+//
 
 $(document).ready(function() {
 
 	$('#search-form').submit(function(e) {
-		e.preventDefault();
-		var searchValue = $('#search').val();
+	e.preventDefault();
+	var searchValue = $('#search').val();
 
-		$.ajax({
-			url: 'products?search=' + searchValue,
-			type: 'get',
-			dataType: 'html' //what the browser should expect from the server
 
-		}).done(function(data){
-
-			$('#products').html(data); //replace the html of the products div with the data returned
-			// there's also .fail() and .always()
+	$.get('/products?search=' + searchValue)
+		.done(function(data){
+			console.log(data);
+			$('#products').html(data);
 		});
 
-	})
+	});
+
 
 });
 
-// Old way with POJS
+
+// **** Old way with .ajax object ****
+
+// $(document).ready(function() {
+
+// 	$('#search-form').submit(function(e) {
+// 		e.preventDefault();
+// 		var searchValue = $('#search').val();
+
+// 		$.ajax({
+// 			url: 'products?search=' + searchValue,
+// 			type: 'get',
+// 			dataType: 'html' //what the browser should expect from the server
+
+// 		}).done(function(data){
+
+// 			$('#products').html(data); //replace the html of the products div with the data returned
+// 			// there's also .fail() and .always()
+// 		});
+
+// 	})
+
+// });
+
+// **** Old way with POJS ****
+
 // $(document).ready(function() {
 
 // 	function display_search_results () {
