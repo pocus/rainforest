@@ -1,0 +1,15 @@
+
+<% @products.each do |p| %>
+	<div class = "item-box">
+		<ul>
+			<li><%= link_to p.name, product_path(p) %></li>
+			<li><%= p.description %></li>
+			<li>$<%= p.formatted_price %></li>
+			<li><%= pluralize(p.reviews.count, "review") %></li>
+			<% if current_user %>
+				<li><%= link_to "edit", edit_product_path(p) %>
+				<li><%= link_to "delete", product_path(p), :method => :delete %>
+			<% end  %>
+		</ul>
+	</div>
+<% end %>
