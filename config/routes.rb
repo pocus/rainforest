@@ -11,7 +11,7 @@ Rainforest::Application.routes.draw do
 
   resources :products do
       resources :reviews, :except => [:index]
-      get 'search', on: :collection
+      #get 'search', on: :collection
   end
 
 

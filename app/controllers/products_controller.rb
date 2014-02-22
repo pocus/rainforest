@@ -9,11 +9,10 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
-  end
 
-  def search
-    @products = Product.where("name LIKE ?", "%#{params[:search]}%")
-    render @products
+    if request.xhr?
+      return render @products #from params search above.
+    end
   end
 
 
